@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>CRIPP-VQA</title>
+    <meta property="og:title" content="CRIPP-VQA" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Arial;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.55;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  </head>
+  <body>
+    <div>
+      <link href="./home.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <div data-role="Header" class="home-navbar-container">
+          <div class="home-navbar">
+            <span class="card-Heading home-heading">CRIPP-VQA</span>
+            <div class="home-links-container">
+              <span class="home-link navbar-Link"><a href="#">Paper</a></span>
+              <span class="home-link1 navbar-Link"><a href="#examples">Examples</a></span>
+              <span class="home-link2 navbar-Link"><a href="#dataset">Dataset</a></span>
+              <span class="navbar-Link">Contact</span>
+            </div>
+            <div data-type="BurgerMenu" class="home-burger-menu">
+              <svg viewBox="0 0 1024 1024" class="home-icon">
+                <path
+                  d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"
+                ></path>
+              </svg>
+            </div>
+            <div data-type="MobileMenu" class="home-mobile-menu">
+              <div class="home-container1">
+                <span class="card-Heading home-heading1">Logo</span>
+                <div data-type="CloseMobileMenu" class="home-close-menu">
+                  <svg viewBox="0 0 1024 1024" class="home-icon02">
+                    <path
+                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="home-links-container1">
+                <span class="home-link4 navbar-Link"><a href="#">Paper</a></span>
+                <span class="home-link5 navbar-Link"><a href="#examples">Examples</a></span>
+                <span class="home-link6 navbar-Link"><a href="#dataset">Dataset</a></span>
+                <span class="navbar-Link">Contact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="home-section-separator"></div>
+        <div class="home-section-separator1"></div> -->
+        <div class="home-container2">
+          <div class="home-hero">
+            <div class="home-hero-text-container">
+              <h1 class="home-heading2 section-Heading">CRIPP-VQA</h1>
+              <span class="home-text section-Text">
+                Counterfactual Reasoning about Implicit Physical Properties via
+                Video Question Answering
+              </span>
+              <p>
+                Videos often capture objects, their motion, and the interactions between different objects. Although real-world objects have physical properties associated with them, many of these properties (such as mass and coefficient of friction) are not captured directly by the imaging pipeline. However, these properties can be estimated by utilizing cues from relative object motion and the dynamics introduced by collisions. In this paper, we introduce a new video question answering task for reasoning about the implicit physical properties of objects in a scene, from videos. For this task, we introduce a dataset – CRIPP-VQA, which contains videos of objects in motion, annotated with hypothetical/counterfactual questions about the effect of actions (such as removing, adding, or replacing objects), questions about planning (choosing actions to perform in order to reach a particular goal), as well as descriptive questions about the visible properties of objects. We benchmark the performance of existing video question answering models on two test settings of CRIPP-VQA: i.i.d. and an out-of-distribution setting which contains objects with values of mass, coefficient of friction, and initial velocities that are not seen in the training distribution. Our experiments reveal a surprising and significant performance gap in terms of answering questions about implicit properties (the focus of this paper) and explicit properties (the focus of prior work) of objects.
+              </p><br>
+              <div class="home-cta-btn-container">
+                <button class="home-cta-btn anchor button">
+                  <span class="home-text1">Paper</span>
+                </button>
+                <a
+                  href="https://anonymous.4open.science/r/CRIPP-VQA/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="home-cta-btn1 button anchor link"
+                >
+                  Code
+                </a>
+              </div>
+            </div>
+            <div>
+              <video
+                src="./public/playground_assets/example_0_new.mp4"
+                poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                controls
+                loop
+                autoplay
+                muted
+                class="home-video"
+              ></video>
+              <p><b>Note:</b> Video-player works in Google Chrome but not on Safari.</p>
+            </div>
+          </div>
+        </div>
+        <div class="home-features" id="examples">
+          <div class="home-heading-container">
+            <h2 class="home-text2 section-Heading">Examples</h2>
+            <span class="home-text3 section-Text">
+              Few examples of descriptive/counterfactual/planning questions
+            </span>
+          </div>
+          <div class="container">
+
+            <div class="row">
+              <div class="col s12 m4">
+                <button class="card-panel waves-effect waves-light red lighten-1 btn" onclick="showExample(0)">Example 0</button>
+              </div>
+              <div class="col s12 m4">
+                <button class="card-panel waves-effect waves-light red lighten-1 btn" onclick="showExample(1)">Example 1</button>
+              </div>
+              <div class="col s12 m4">
+                <button class="card-panel waves-effect waves-light red lighten-1 btn" onclick="showExample(1)">Example 2</button>
+              </div>
+            </div>
+
+            <div class="row" id="example_0">
+              <div class="row">
+                <div class="col s12 m4">
+                  <div class="icon-block">
+                    <h4>Input video</h4>
+                    <video
+                      src="./public/playground_assets/example_0_new.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                </div>
+                <div class="col s12 m8">
+                  <div class="icon-block">
+                    <h4>Question</h4>
+                    <button class="card-panel waves-effect waves-light btn" onclick="showDescriptive(0)">Descriptive QA</button>
+                    <div class="row" id="descriptive0" style="display: none">
+                      <p><b>Q: What is the material of minimum occurring objects in the video ?</b></p>
+                      <p>A: Aluminium</p><br>
+                      <p><b>Q: Do purple cardboard sphere objects exist in the video ?</b></p>
+                      <p>A: No</p><br>
+                      <p><b>Q: How many collisions are there between purple aluminium sphere and teal aluminium cube ?</b></p>
+                      <p>A: 0</p>
+                    </div>
+                    <br>
+                    <button class="card-panel waves-effect waves-light btn" onclick="showCounterfactual(0)">Counterfactual QA</button>
+                    <div class="row" id="counterfactual0" style="display: none">
+                      <p><b>Q: What will happen, if the purple aluminium cube is removed ?</b></p>
+                      <p>C1: teal cardboard sphere would collide with olive cardboard sphere</p>
+                      <p>A1: true</p>
+                      <p>C2: teal cardboard sphere would collide with purple cardboard cube</p>
+                      <p>A2: false</p><br>
+                      <p><b>Q: What will happen, if the teal aluminium cube is replaced with olive cardboard cube?</b></p>
+                      <p>C1: olive cardboard sphere would collide with purple aluminium cube</p>
+                      <p>A1: false</p>
+                      <p>C2: olive cardboard sphere would collide with purple cardboard cube</p>
+                      <p>A2: true</p><br>
+                      <p><b>Q: What will happen, if I add olive cardboard cube at the back of purple aluminium cube?</b></p>
+                      <p>C1: olive cardboard sphere would collide with purple aluminium cube</p>
+                      <p>A1: false</p>
+                      <p>C1: teal aluminium cube would collide with olive cardboard cube</p>
+                      <p>A2: true</p>
+                    </div>
+                    <br>
+                    <button class="card-panel waves-effect waves-light btn" onclick="showPlanning(0)">Planning QA</button>
+                    <div class="row" id="planning0" style="display: none">
+                      <p><b>Q: Make the collition between teal cardboard sphere and olive cardboard sphere.</b></p>
+                      <p>A: Remove => purple cardboard cube</p><br>
+                      <p><b>Q: Stop the collision between olive cardboard sphere and purple aluminium cube.</b></p>
+                      <p>A: Repalce => teal aluminium cube by olive cardboard cube</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button class="card-panel waves-effect waves-light btn" onclick="showCounterVideo(0)">Show counterfactual videos</button>
+                <div class="row" id="counterfactualVideo0">
+                  <h5>Counterfactual reference videos for readers:</h5>
+                  <div class="col s12 m4">
+                    <h6 class="center"><b>Remove</b></h6>
+                    <video
+                      src="./public/playground_assets/example_0_0_remove.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                  <div class="col s12 m4">
+                    <h6 class="center"><b>Replace</b></h6>
+                    <video
+                      src="./public/playground_assets/example_0_1_replace.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                  <div class="col s12 m4">
+                    <h6 class="center"><b>Add</b></h6>
+                    <video
+                      src="./public/playground_assets/example_0_1_add.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" id="example_1" style="display: none;">
+              <div class="row">
+                <div class="col s12 m4">
+                  <div class="icon-block">
+                    <h4>Input video</h4>
+                    <video
+                      src="./public/playground_assets/example_1_new.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                </div>
+                <div class="col s12 m8">
+                  <div class="icon-block">
+                    <h4>Question</h4>
+                    <button class="card-panel waves-effect waves-light btn" onclick="showDescriptive(1)">Descriptive QA</button>
+                    <div class="row" id="descriptive1" style="display: none">
+                      <p><b>Q: What is the material of maximum occurring objects in the video ?</b></p>
+                      <p>A: Cardboard</p><br>
+                      <p><b>Q: Do purple cardboard sphere objects exist in the video ?</b></p>
+                      <p>A: Yes</p><br>
+                      <p><b>Q: How many collisions are there between purple cardboard cube and olive aluminium cube ?</b></p>
+                      <p>A: 1</p>
+                    </div>
+                    <br>
+                    <button class="card-panel waves-effect waves-light btn" onclick="showCounterfactual(1)">Counterfactual QA</button>
+                    <div class="row" id="counterfactual1" style="display: none">
+                      <p><b>Q: What will happen, if the olive aluminium cube is removed ?</b></p>
+                      <p>C1: purple cardboard cube would collide with olive cardboard cube</p>
+                      <p>A1: true</p>
+                      <p>C2: purple cardboard cube would collide with teal cardboard cube</p>
+                      <p>A2: false</p><br>
+                      <p><b>Q: What will happen, if the olive aluminium cube is replaced with pruple aluminium cube?</b></p>
+                      <p>C1: olive cardboard cube would collide with purple cardboard cube</p>
+                      <p>A1: false</p>
+                      <p>C2: purple cardboard cube would collide with purple aluminium cube</p>
+                      <p>A2: true</p><br>
+                      <p><b>Q: What will happen, if I add teal aluminium sphere at the right of purple cardboard sphere?</b></p>
+                      <p>C1: purple cardboard cube would collide with olive cardboard cube</p>
+                      <p>A1: false</p>
+                      <p>C1: purple cardboard cube would collide with purple cardboard sphere</p>
+                      <p>A2: true</p>
+                    </div>
+                    <br>
+                    <button class="card-panel waves-effect waves-light btn" onclick="showPlanning(1)">Planning QA</button>
+                    <div class="row" id="planning1" style="display: none">
+                      <p><b>Q: Stop the collision between olive cardboard cube and purple cardboard cube.</b></p>
+                      <p>A: Replace => olive aluminium cube by pruple aluminium cube</p><br>
+                      <p><b>Q: Stop the collision between olive cardboard cube and purple cardboard cube.</b></p>
+                      <p>A: Add => teal aluminium sphere to the right of purple cardboard sphere</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button class="card-panel waves-effect waves-light btn" onclick="showCounterVideo(1)">Show counterfactual videos</button>
+                <div class="row" id="counterfactualVideo1">
+                  <h5>Counterfactual reference videos for readers:</h5>
+                  <div class="col s12 m4">
+                    <h6 class="center">Remove</h6>
+                    <video
+                      src="./public/playground_assets/example_1_0_remove.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                  <div class="col s12 m4">
+                    <h6 class="center">Replace</h6>
+                    <video
+                      src="./public/playground_assets/example_1_0_replace.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                  <div class="col s12 m4">
+                    <h6 class="center">Add</h6>
+                    <video
+                      src="./public/playground_assets/example_1_0_add.mp4"
+                      poster="https://play.teleporthq.io/static/svg/videoposter.svg"
+                      controls
+                      loop
+                      autoplay
+                      muted
+                      width="256"
+                      height="256"
+                    ></video>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </div>
+          <!-- <div class="home-cards-container">
+            <div class="home-container3"></div>
+          </div> -->
+        </div>
+        <div class="home-about" id="dataset">
+          <div class="home-max-content-width-container">
+            <div class="home-heading-container1">
+              <h1 class="section-Heading home-text4">Dataset</h1>
+            </div>
+            <div class="home-content-container">
+              <div class="home-about-1">
+                <div class="home-container4">
+                  <svg viewBox="0 0 1024 1024" class="home-icon04">
+                    <path
+                      d="M170 512q0-140 101-241t241-101 241 101 101 241-101 241-241 101-241-101-101-241z"
+                    ></path>
+                  </svg>
+                  <span class="home-text5 card-Text">
+                    Annotations are available at: <a href="https://drive.google.com/file/d/1lwNJHgrk2K2W-1HmK0IDv8yOePZ67UWS/view?usp=sharing">Drive Link</a>
+                  </span>
+                </div>
+                <div class="home-container5">
+                  <div class="home-container6">
+                    <svg viewBox="0 0 1024 1024" class="home-icon06">
+                      <path
+                        d="M170 512q0-140 101-241t241-101 241 101 101 241-101 241-241 101-241-101-101-241z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="home-text6 card-Text">
+                    Questions & Answers are available at: <a href="https://drive.google.com/file/d/1lwNJHgrk2K2W-1HmK0IDv8yOePZ67UWS/view?usp=sharing">Drive Link</a>
+                  </span>
+                </div>
+                <div class="home-container5">
+                  <div class="home-container6">
+                    <svg viewBox="0 0 1024 1024" class="home-icon06">
+                      <path
+                        d="M170 512q0-140 101-241t241-101 241 101 101 241-101 241-241 101-241-101-101-241z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="home-text6 card-Text">
+                     To re-create the high-quality videos from the annotations follow instructions at: <a href="https://anonymous.4open.science/r/CRIPP-VQA/">Code Link</a>
+                  </span>
+                </div>
+                <div class="home-container5">
+                  <div class="home-container6">
+                    <svg viewBox="0 0 1024 1024" class="home-icon06">
+                      <path
+                        d="M170 512q0-140 101-241t241-101 241 101 101 241-101 241-241 101-241-101-101-241z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="home-text6 card-Text">
+                    Train/Val/Test distribution: [0-4000) / [4000, 4500) / [4500, 5000]
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-section-separator2"></div>
+        <div class="home-section-separator3"></div>
+        <div class="home-section-separator4"></div>
+        <div class="home-section-separator5"></div>
+        <div class="home-subscribe"></div>
+        <div class="home-section-separator6"></div>
+        <div class="home-footer-container">
+          <div class="home-footer">
+            <div class="home-social-links">
+              <svg viewBox="0 0 950.8571428571428 1024" class="home-icon08">
+                <path
+                  d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                ></path>
+              </svg>
+            </div>
+            <div class="home-copyright-container">
+              <svg viewBox="0 0 1024 1024" class="home-icon10">
+                <path
+                  d="M512 854q140 0 241-101t101-241-101-241-241-101-241 101-101 241 101 241 241 101zM512 86q176 0 301 125t125 301-125 301-301 125-301-125-125-301 125-301 301-125zM506 390q-80 0-80 116v12q0 116 80 116 30 0 50-17t20-43h76q0 50-44 88-42 36-102 36-80 0-122-48t-42-132v-12q0-82 40-128 48-54 124-54 66 0 104 38 42 42 42 98h-76q0-14-6-26-10-20-14-24-20-20-50-20z"
+                ></path>
+              </svg>
+              <span class="anchor"><span>Copyright, 2022</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script src="./custom.js"></script>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>
