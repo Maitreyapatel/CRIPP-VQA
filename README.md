@@ -27,11 +27,11 @@ This repository contains the codebase for the EMNLP'22 main conference long pape
 ## Aloe*+BERT Model
 The Aloe*+BERT is PyTorch version of the modified baseline Aloe from [Ding et. al.](https://openreview.net/forum?id=lHmhW2zmVN)
 
-* Please refer to the modeling.md for the instructions on training of the Aloe*+BERT.
+* Please refer to the [modeling.md](Aloe-star/README.md) for the instructions on training of the Aloe*+BERT.
 
 ## Evaluation
 * Evaluations for the descriptive and counterfactual questions are straightforward.
-* For planning based task evaluation, please refer to the planning_eval.md for step by step instructions.
+* For planning based task evaluation, please refer to the [evaluations.md](evaluation/evaluations.md) for step by step instructions.
 
 ## Acknowledgement
 This work is supported by NSF and DARPA projects. We also thank the David Ding for timely feedback to reproduce the results of PyTorch version of the Aloe on CLEVRER dataset. 
