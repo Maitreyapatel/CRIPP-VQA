@@ -4,7 +4,7 @@ This repository contains the codebase for the EMNLP'22 main conference long pape
 
 [Demo](https://maitreyapatel.com/CRIPP-VQA/) | [Arxiv](https://maitreyapatel.com/CRIPP-VQA/) | [Dataset](https://maitreyapatel.com/CRIPP-VQA/) 
 
-<table border="0" style="width:100%">
+<!-- <table border="0" style="width:100%">
  <tr>
     <td style="width:60%">
     <h2><b>Abstract</b></h2>
@@ -16,8 +16,11 @@ This repository contains the codebase for the EMNLP'22 main conference long pape
         </div>
     </td>
  </tr>
-</table>
+</table> -->
 
+<div  align="center">
+    <img src="tmp/cripp_main_fig.png" width="500px"/>
+</div>
 
 ## Dataset preparation
 * Download the annotations and question-answer pair files from [dataset link](https://maitreyapatel.com/CRIPP-VQA/#dataset).
