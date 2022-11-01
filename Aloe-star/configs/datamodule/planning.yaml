@@ -1,0 +1,11 @@
+_target_: src.datamodules.planning_datamodule.PlanningDataModule
+
+config: ${model.model_args}
+data_dir: ${data_dir} # data_dir is specified in config.yaml
+answer_map_planning_name: "answer_map_planning.pickle"
+planning_filename: "planning_gt.json"
+monet_feature_path: "mask_based_features"
+predefined_objects: "predefined_objects_easy.csv"
+batch_size: 64
+num_workers: 4
+pin_memory: False

@@ -1,0 +1,38 @@
+_target_: src.models.aloe_module_descriptive.AloeModule
+lr: 0.000005
+weight_decay: 0.0
+num_warmup_steps: 4000
+model_args:
+  max_labels: 13
+  huggingface:
+    embedding:
+      special_tokens: 2
+      max_position_embeddings: 270
+      max_frame_embeddings: 25
+      type_vocab_size: 4 # vision+text+special
+      x_axis_embedding: 512
+      y_axis_embedding: 512
+      hidden_size: 768
+      layer_norm_eps: 1e-12
+      hidden_dropout_prob: 0.1
+
+    video:
+      height: 512
+      weidth: 512
+      frames: 25
+      interval: 5
+      max_frames: 125
+      max_objects: 8
+
+    trasnformer:
+      hidden: 768
+      n_layers: 28
+      attn_heads: 12
+      dropout: 0.1
+
+    bert:
+      max_len: 45
+      hidden_size: 768
+      
+    monet:
+      feature_size: 512

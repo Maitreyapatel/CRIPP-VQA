@@ -1,0 +1,5 @@
+defaults:
+  - default.yaml
+
+devices: 2
+strategy: deepspeed_stage_3

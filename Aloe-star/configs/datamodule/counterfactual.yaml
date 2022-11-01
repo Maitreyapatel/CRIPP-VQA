@@ -1,0 +1,9 @@
+_target_: src.datamodules.counterfactual_datamodule.CounterfactualDataModule
+
+config: ${model.model_args}
+data_dir: ${data_dir} # data_dir is specified in config.yaml
+counterfactual_filename: "counterfactual_gt.json"
+monet_feature_path: "mask_based_features"
+batch_size: 64
+num_workers: 4
+pin_memory: False

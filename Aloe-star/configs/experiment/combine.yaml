@@ -1,0 +1,46 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /datamodule: combine.yaml
+  - override /model: aloe_combine.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb
+  - override /trainer: default.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+# name of the run determines folder name in logs
+name: "aloe_combine"
+
+seed: 12345
+
+trainer:
+  min_epochs: 10
+  max_epochs: 20
+  gradient_clip_val: 0.0
+
+model:
+  lr: 0.000005
+  num_warmup_steps: 1000
+
+datamodule:
+  descriptive_args:
+    batch_size: 32
+  counterfactual_args:
+    batch_size: 16
+
+callbacks:
+  early_stopping:
+    monitor: "val/acc_cnt"
+  model_checkpoint:
+    monitor: "val/acc_cnt"
+
+logger:
+  wandb:
+    name: ${name}
+    tags: ["test", "${name}"]
+

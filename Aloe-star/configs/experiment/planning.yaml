@@ -1,0 +1,38 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /datamodule: planning.yaml
+  - override /model: aloe_planning.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb
+  - override /trainer: ddp.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+# name of the run determines folder name in logs
+name: "aloe_planning"
+
+seed: 12345
+
+trainer:
+  min_epochs: 10
+  max_epochs: 100
+  gradient_clip_val: 0.0
+
+model:
+  lr: 0.000005
+  num_warmup_steps: 4000
+
+datamodule:
+  batch_size: 64
+
+
+logger:
+  wandb:
+    name: ${name}
+    tags: ["test", "${name}"]
+
