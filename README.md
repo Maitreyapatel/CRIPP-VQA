@@ -2,7 +2,7 @@
 # CRIPP-VQA: Counterfactual Reasoning about Implicit Physical Properties via Video Question Answering
 This repository contains the codebase for the EMNLP'22 main conference long paper => CRIPP-VQA: Counterfactual Reasoning about Implicit Physical Properties via Video Question Answering
 
-[Demo](https://maitreyapatel.com/CRIPP-VQA/) | [Arxiv](https://maitreyapatel.com/CRIPP-VQA/) | [Dataset](https://maitreyapatel.com/CRIPP-VQA/) 
+[Demo](https://maitreyapatel.com/CRIPP-VQA/) | [Arxiv](https://arxiv.org/abs/2211.03779/) | [Dataset](https://maitreyapatel.com/CRIPP-VQA/#dataset) 
 
 <!-- <table border="0" style="width:100%">
  <tr>
