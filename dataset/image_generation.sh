@@ -1,18 +1,42 @@
 #!/bin/sh
-max=6000
 
-mkdir dataset/generated_videos/$1
+unzip annotations.zip
 
-for num in `seq 0 $max`
-do
-    rm -rf ./tmp/*.json
-    rm -rf ./tmp/img/*.png
+function unzip_file()
+{
+    for file in `ls $1`
+    do
+        cur=$1/$file
+        if [ -d $cur ]; then
+            unzip_file $cur
+        else
+            unzip $cur -d $1
+        fi
+    done
+}
 
-    echo "$num"
-    timeout --kill-after=100 100 python3 recreation_v3.py --jsonold dataset/annotations/$1/example_$num.json
-    if [ $? -eq 124 ]; then
-        num=num-1
-    else
-        ffmpeg -framerate 25 -i ./dist/img_%04d.png -c:v copy dataset/generated_videos/$1/example_$num.mkv
-    fi
-done
+unzip_file "icqa_dataset"
+
+function process_file()
+{
+    for file in `ls $1`
+    do
+        cur=$1/$file
+        if [ -d $cur ]; then
+            process_file $cur
+        else
+            if [[ "$file" == *".json" ]]; then 
+                echo $cur
+                timeout --kill-after=100 100 python recreate.py --jsonold $cur
+                if [ $? -eq 124 ]; then
+                    echo "Timeout out"
+                else
+                    mkdir -p generated_videos/$1
+                    ffmpeg -framerate 25 -i ./dist/img_%04d.png -c:v copy generated_videos/$1/${file:0:-5}.mkv
+                fi
+            fi
+        fi
+    done
+}
+
+process_file "icqa_dataset"
